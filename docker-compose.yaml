@@ -1,0 +1,15 @@
+janus:
+    build: ./janus/
+    ports:
+        - 8989:8989
+        - 8188:8188
+        - "20000-20060:20000-20060/udp"
+    environment:
+        IP: 192.168.99.100
+
+apache:
+    build: ./apache/
+    ports:
+        - 443:443
+    links:
+        - janus
